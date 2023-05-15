@@ -4,6 +4,10 @@ import java.text.DecimalFormat;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.regex.Pattern;
 
+import javax.swing.JPanel;
+
+import frientrip.main.Main;
+
 /**
 * @packageName   : frientrip.common
 * @fileName      : Boilerplate.java
@@ -65,6 +69,17 @@ public class Boilerplate {
 		String money = df.format(num);
 		
 		return money;
+		
+	}
+	
+	//패널 화면 전환
+	public static void redraw(JPanel panel) {
+		
+		if(Main.getMf() != null) Main.getMf().remove(Main.getMf().getCurrentPanel());
+		Main.getMf().setCurrentPanel(panel);
+		Main.getMf().add(Main.getMf().getCurrentPanel());
+		Main.getMf().getContentPane().setVisible(false);
+		Main.getMf().getContentPane().setVisible(true);
 		
 	}
 	
