@@ -6,6 +6,23 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import javax.swing.JOptionPane;
+
+import frientrip.main.MainFrame;
+
+/**
+* @packageName   : frientrip.dao
+* @fileName      : DAO.java
+* @author        : Taejeong Park
+* @date          : 2023.05.16
+* @description   : 데이터베이스 접근 클래스
+* ===========================================================
+* DATE              AUTHOR            NOTE
+* -----------------------------------------------------------
+* 2023.05.15        Taejeong Park      최초 생성
+* 2023.05.15		Taejeong Park      구현 완료
+* 2023.05.16		Taejeong Park      오류 Alert 기능 추가
+*/
 public class DAO {
 
 	public static Connection conn;
@@ -21,7 +38,7 @@ public class DAO {
 			conn = DriverManager.getConnection(
 					"jdbc:mysql://127.0.0.1:3306/frientrip?serverTimezone=UTC", 
 					"root", 
-					"");
+					"Mbctp2149**");
 			
 			stmt = conn.createStatement();
 			
@@ -80,7 +97,7 @@ public class DAO {
 	
 	//오류 메시지 출력 Alert
 	private static void connFailAlert() {
-		
+		JOptionPane.showMessageDialog((MainFrame) MainFrame.getMainFrame(), "서버 접속에 실패했습니다.\n다시 시도해주세요.", "접속 실패", JOptionPane.ERROR_MESSAGE);
 	}
 	
 }

@@ -9,14 +9,26 @@ import java.awt.event.WindowListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import frientrip.dao.DAO;
 import frientrip.login.LoginPanel;
 
+/**
+* @packageName   : frientrip.main
+* @fileName      : MainFrame.java
+* @author        : Taejeong Park
+* @date          : 2023.05.15
+* @description   : 메인 프레임 클래스
+* ===========================================================
+* DATE              AUTHOR            NOTE
+* -----------------------------------------------------------
+* 2023.05.15        Taejeong Park      최초 생성
+* 2023.05.16        Taejeong Park      구현 완료
+*/
 public class MainFrame extends JFrame implements WindowListener {
 
 	private static JFrame mainFrame;
 	private JPanel currentPanel;
 	
-	//로그인 화면
 	public MainFrame(String title) {
 		
         setTitle(title);
@@ -34,6 +46,7 @@ public class MainFrame extends JFrame implements WindowListener {
         setVisible(true);
         
         addWindowListener(this);
+        
 	}
 	
 	public static JFrame getMainFrame() {
@@ -68,7 +81,8 @@ public class MainFrame extends JFrame implements WindowListener {
 
 	@Override
 	public void windowClosing(WindowEvent e) {
-		// TODO Auto-generated method stub
+		
+		DAO.closeDB(DAO.conn, DAO.stmt);	//DB 연결 종료
 		
 	}
 
