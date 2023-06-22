@@ -10,7 +10,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import frientrip.dao.DAO;
-import frientrip.login.LoginPanel;
 
 /**
 * @packageName   : frientrip.main
@@ -40,7 +39,7 @@ public class MainFrame extends JFrame implements WindowListener {
         
         mainFrame = this;
         
-        currentPanel = new LoginPanel();
+        currentPanel = new MainPanel();
         add(currentPanel);
         
         setVisible(true);
