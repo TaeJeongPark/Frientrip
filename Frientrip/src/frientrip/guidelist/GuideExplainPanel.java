@@ -2,6 +2,8 @@ package frientrip.guidelist;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 
@@ -15,33 +17,111 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
+import javax.swing.border.EmptyBorder;
 
-public class GuideExplainPanel extends JPanel{
+import frientrip.main.MainFrame;
+
+	public class GuideExplainPanel extends JPanel{
+	private MainFrame mainFrame = null;
+	private ImageIcon img_guideexlaintitle;
+	private ImageIcon img_smalllogo;
+	private ImageIcon img_Back;
+	private JButton btnBack;
 	
 public GuideExplainPanel() {
+	
+		setLayout(new BorderLayout());
+    
+		setSize(1050, 750);
+		setBackground(new Color(220, 238, 248));    //배경색 설정
+    
+		mainFrame = (MainFrame) MainFrame.getMainFrame();	//메인 프레임 객체 주소 저장
+    
+		mainFrame.setTitle("GuideList");
+    
+		makeImageIcon();
+    
+		makeTitle();
 		
+		makeCenter();
+}
+    
+    
+	
+
+
+	
+
+private void makeImageIcon() {
+	
+	img_guideexlaintitle = new ImageIcon("Frientrip/img/guideexplain/img_guideexplaintitle.png");
+	img_smalllogo = new ImageIcon("Frientrip/img/guidelist/img_smalllogo.png");
+	img_Back = new ImageIcon("Frientrip/img/guidelist/img_Back.png");
+	
+}
+
+private void makeTitle() {
+	
+
+		JPanel pnTitleBackground = new JPanel();
+		pnTitleBackground.setLayout(new BorderLayout());
+		pnTitleBackground.setBackground(new Color(220, 238, 248));		//패널 색상 배경색과 동일하게 설정
+			
+			
+		//타이틀 생성
+		JPanel pnTitle = new JPanel();
+		pnTitle.setLayout(new FlowLayout(FlowLayout.CENTER));
+		pnTitle.setBorder(new EmptyBorder(0, 150, 0, 120));	//패널 패딩 설정
+		pnTitle.setBackground(new Color(220, 238, 248));		//패널 색상 배경색과 동일하게 설정
+		JLabel lblTitle = new JLabel(img_guideexlaintitle);
+		pnTitle.add(lblTitle);
+		pnTitleBackground.add(pnTitle, BorderLayout.CENTER);
+			
+			//뒤로가기 버튼 생성
+	    JPanel pnBack = new JPanel();
+		pnBack.setLayout(new FlowLayout(FlowLayout.CENTER));
+		pnBack.setPreferredSize(new Dimension(120, 120));	//패널 크기 설정
+		pnBack.setBorder(new EmptyBorder(30, 30, 100, 0));		//패널 패딩 설정
+		pnBack.setBackground(new Color(220, 238, 248));		//패널 색상 배경생과 동일하게 설정
+		btnBack = new JButton(img_Back);
+		btnBack.setBorderPainted(false); //버튼 테두리 없애기
+		btnBack.setContentAreaFilled(false); //버튼 배경 없애기
+		pnBack.add(btnBack);
+		pnTitleBackground.add(pnBack, BorderLayout.WEST);
+		
+		//로고 생성
+		JPanel pnLogo = new JPanel();
+		pnLogo.setLayout(new FlowLayout(FlowLayout.CENTER));
+		//pnLogo.setBorder(new EmptyBorder(0, 0, 0, 0));	//패널 패딩 설정
+		pnLogo.setBackground(new Color(220, 238, 248));		//패널 색상 배경색과 동일하게 설정
+		JLabel lblLogo = new JLabel(img_smalllogo);
+		pnLogo.add(lblLogo);
+		pnTitleBackground.add(pnLogo, BorderLayout.EAST);
+		
+		
+		add(pnTitleBackground, BorderLayout.NORTH);
+			
+	
+	}
+
+
+private void makeCenter() {
+
+    
+	
 		Color baseColor =new Color(220, 238, 248);
 		Color baseColor2 = new Color(213, 251, 200);
 
 		
        
         
-        JPanel panNorth = new JPanel(); 
-        panNorth.setLayout(new BorderLayout());
-        panNorth.setBackground(baseColor);
-        ImageIcon img_guideexplaintitle = new ImageIcon("img/guideexplain/img_guideexplaintitle.png");
-        JLabel lbl_guideexpliantitle = new JLabel(img_guideexplaintitle);
-        panNorth.add(lbl_guideexpliantitle, BorderLayout.CENTER); 
         
-        ImageIcon img_smalllogo = new ImageIcon("img/guidelist/img_smalllogo.png");
-        JLabel lbl_logo = new JLabel(img_smalllogo);
-        panNorth.add(lbl_logo, BorderLayout.EAST);
         
         JPanel panCenter = new JPanel(); 
         panCenter.setLayout(null);
-        panCenter.setBackground(baseColor2);
+        panCenter.setBackground(new Color(213, 251, 200));
         
-        ImageIcon img_EXprofile = new ImageIcon("img/guideexplain/img_EXprofile.png");
+        ImageIcon img_EXprofile = new ImageIcon("Frientrip/img/guideexplain/img_EXprofile.png");
     	JLabel lbl_profile = new JLabel(img_EXprofile);
     	lbl_profile.setSize(137, 160);
     	lbl_profile.setLocation(10, 10);
@@ -131,12 +211,10 @@ public GuideExplainPanel() {
     	bg.add(rb_products4); 
     	panLeft.add(rb_products4);
     	
-    	ImageIcon img_gochat = new ImageIcon("img/guideexplain/img_gochat.png");
+    	ImageIcon img_gochat = new ImageIcon("Frientrip/img/guideexplain/img_gochat.png");
     	JButton btn_gochat = new JButton(img_gochat);
     	
     	btn_gochat.setBounds(89, 340, 138, 46);
-    	//btn_gochat.setBackground(new Color(255, 255, 255));
-      //  btn_gochat.setBorderPainted(false);
     	panLeft.add(btn_gochat);
     	
     	JPanel panRight = new JPanel();
@@ -174,7 +252,7 @@ public GuideExplainPanel() {
         lbl_etc.setForeground(new Color(59, 126, 205));
         panRight.add(lbl_etc); 
     	
-        ImageIcon img_productimage = new ImageIcon("img/guideexplain/img_productimage.png");
+        ImageIcon img_productimage = new ImageIcon("Frientrip/img/guideexplain/img_productimage.png");
     	JLabel lbl_productimage = new JLabel(img_productimage);
     	lbl_productimage.setSize(381, 360);
     	lbl_productimage.setLocation(0, 200);
@@ -244,11 +322,14 @@ public GuideExplainPanel() {
     	panCenter.add(panRight);
     	
 	
-        add(panNorth, BorderLayout.NORTH);
+    
         add(panCenter, BorderLayout.CENTER);
         setVisible(true);
 	}
-
+	
+	
+	
 
 	
 }
+
