@@ -4,6 +4,7 @@ import frientrip.chat.ChatPanel;
 import frientrip.common.Boilerplate;
 import frientrip.guidelist.GuideExplainPanel;
 import frientrip.guidelist.GuideListPanel;
+import frientrip.login.LoginPanel;
 import frientrip.mypage.MyPagePanel;
 import frientrip.order.OrderExplainPanel;
 import frientrip.order.OrderPanel;
@@ -19,7 +20,7 @@ public class Main {
 		
 		mf = new MainFrame("Login");
 		
-		Boilerplate.redraw(new MainPanel());
+		Boilerplate.redraw(new LoginPanel());
 		
 	}
 	
