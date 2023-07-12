@@ -58,8 +58,6 @@ public class GuideListPanel extends JPanel implements MouseListener {
         makeCenter();
         
         
-      
-        
 	}
 
 	private void makeImageIcon() {

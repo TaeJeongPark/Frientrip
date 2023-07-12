@@ -112,10 +112,6 @@ private void makeCenter() {
 		Color baseColor =new Color(220, 238, 248);
 		Color baseColor2 = new Color(213, 251, 200);
 
-		
-       
-        
-        
         
         JPanel panCenter = new JPanel(); 
         panCenter.setLayout(null);
